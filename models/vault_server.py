@@ -1,9 +1,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
-from datetime import timedelta
-from typing import AnyStr
-from typing import Dict
 
 from odoo import api, fields, models, _
 from odoo.addons.rainbow.controllers.main import service_client
@@ -24,6 +21,7 @@ try:
 except ImportError:
     _logger.debug("Can not `import queue_job`.")
     import functools
+
 
 class VaultServer(models.Model):
     _name = 'vault.server'
@@ -52,31 +50,28 @@ class VaultServer(models.Model):
         comodel_name='vault.product.property', inverse_name='vault_server_id',
         string='Vault product properties')
     vault_custom_revision = fields.Many2one(
-        comodel_name="vault.product.property",
-        string="Vault revision",
-        help="Set the Vault property used to compare revisions on update "
-             "process.",
+        comodel_name='vault.product.property',
+        string='Vault revision',
+        help='Set the Vault property used to compare revisions on update process.',
         domain="[('odoo_field_ids.ttype', 'in', ['char', 'float'])]",
     )
     has_properties = fields.Boolean(compute='_compute_has_properties')
     product_field_ids = fields.Many2many(
-        comodel_name="ir.model.fields",
-        string="Product fields",
+        comodel_name='ir.model.fields',
+        string='Product fields',
         domain="[('model_id.model', '=', 'product.template')]",
     )
     request_from = fields.Datetime(
-        string="Vault update date from",
-        help="Vault update date from to request to Vault server. You can set "
-             "any hour to subtract in the following field.",
+        string='Vault update date from',
+        help='Vault update date from to request to Vault server. You can set any hour to subtract in the following field.',
         copy=False,
     )
-    hours_to_subtract = fields.Integer(string="Hours to subtract")
+    hours_to_subtract = fields.Integer(string='Hours to subtract')
     company_id = fields.Many2one(
-        comodel_name="res.company",
-        string="Company",
+        comodel_name='res.company',
+        string='Company',
         help="Set the Company over which to create the products",
     )
-
 
 
 class VaultServerLog(models.Model):

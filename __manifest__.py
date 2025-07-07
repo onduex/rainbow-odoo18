@@ -13,8 +13,9 @@
     'version': '18.0.0.0',
     'depends': [
         'base',
+        'res',
         'mrp',
-        'stock'
+        'stock',
     ],
     'external_dependencies': {
         'python': ['zeep'],
