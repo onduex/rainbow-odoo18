@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="vault_category_view_tree" model="ir.ui.view">
+        <field name="name">vault.category.view.tree</field>
+        <field name="model">vault.category</field>
+        <field name="arch" type="xml">
+            <tree string="Vault Categories" editable="top" create="0">
+                <field name="vault_internal_id" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="description" readonly="1"/>
+                <field name="vault_sys_name" readonly="1"/>
+                <field name="vault_server_id" readonly="1"/>
+                <field name="product_categ_id"/>
+                <field name="no_update_categ_id"/>
+                <field name="route_ids"/>
+                <field name="no_update_route_ids"/>
+                <field name="type"/>
+                <field name="no_update_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="vault_category_view_search" model="ir.ui.view">
+        <field name="name">vault.category.view.search</field>
+        <field name="model">vault.category</field>
+        <field name="arch" type="xml">
+            <search string="Search Categories">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="vault_internal_id"/>
+                <field name="product_categ_id"/>
+                <group string="Group By" name="groupby">
+                    <filter name="vault_server_groupby" string="Vault Server"
+                            context="{'group_by': 'vault_server_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="vault_category_action" model="ir.actions.act_window">
+        <field name="name">Vault Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vault.category</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Vault Categories.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="vault_category_menu"
+              name="Vault Categories"
+              parent="vault_server_items_menu"
+              action="vault_category_action"
+              sequence="10"/>
+
+</odoo>

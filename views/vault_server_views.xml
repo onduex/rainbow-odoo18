@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="vault_server_view_form" model="ir.ui.view">
+        <field name="name">vault.server.view.form</field>
+        <field name="model">vault.server</field>
+        <field name="arch" type="xml">
+            <form string="Vault Server">
+                <sheet>
+                    <field name="has_properties" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="test_connection" type="object" string="Test connection" icon="fa-desktop"/>
+                    </div>
+                    <group>
+                        <group name="server_data" string="Server data">
+                            <field name="name"/>
+                            <field name="host_name"/>
+                        </group>
+                        <group name="credentials" string="Credentials">
+                            <field name="user_name"/>
+                            <field name="user_password" password="True"/>
+                            <field name="knowledge_vault"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <!--<page name="vault_categories" string="Categories">
+                            <group>
+                                <field name="total_vault_categories"/>
+                            </group>
+                            <div>
+                                <field name="vault_category_ids" nolabel="1">
+                                    <tree create="0" limit="100" editable="top">
+                                        <field name="vault_internal_id" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="description" readonly="1"/>
+                                        <field name="vault_sys_name" readonly="1"/>
+                                        <field name="product_categ_id"/>
+                                        <field name="no_update_categ_id"/>
+                                        <field name="route_ids" widget="many2many_tags"/>
+                                        <field name="no_update_route_ids"/>
+                                        <field name="type"/>
+                                        <field name="no_update_type"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>-->
+                        <!--<page name="vault_uom" string="UoM">
+                            <group>
+                                <field name="total_vault_uom"/>
+                            </group>
+                            <div>
+                                <field name="vault_uom_ids" nolabel="1">
+                                    <tree create="0" limit="100" editable="top">
+                                        <field name="vault_internal_id" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="abbreviation" readonly="1"/>
+                                        <field name="vault_sys_name" readonly="1"/>
+                                        <field name="conversion" readonly="1"/>
+                                        <field name="uom_id"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>-->
+                        <!--<page name="vault_life_cycle" string="Life Cycles">
+                            <div>
+                                <field name="vault_life_cycle_ids" nolabel="1" mode="tree,kanban">
+                                    <tree create="0" limit="100" editable="top">
+                                        <field name="vault_internal_id" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="description" readonly="1"/>
+                                        <field name="sys_name" readonly="1"/>
+                                        <field name="total_states" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>-->
+                        <page name="vault_properties" string="Product Properties">
+                            <div class="o_row" title="Product Properties">
+                                <button type="object"
+                                        name="get_vault_product_properties"
+                                        class="btn-success fa fa-arrow-down"
+                                        string=" Import"
+                                        help="Import new product products from vault server"/>
+                            </div>
+                            <br/>
+                            <group>
+                                <field name="vault_custom_revision"
+                                       required="has_properties == True"
+                                       options="{'no_create': True, 'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
+                                <field name="company_id"
+                                       options="{'no_create': True, 'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
+                            </group>
+                            <div>
+                                <field name="vault_product_property_ids" nolabel="1">
+                                    <tree create="0" limit="100" editable="top">
+                                        <field name="vault_internal_id" readonly="1"/>
+                                        <field name="vault_name" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="type" readonly="1"/>
+                                        <field name="odoo_field_ids" column_invisible="1"/>
+                                        <field name="product_field_id"
+                                               domain="[('id', 'in', odoo_field_ids)]"
+                                               options="{'no_create_edit': True, 'no_quick_create': True}"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                        <page name="vault_products" string="Products">
+                            <div class="o_row" title="Products">
+                                <button type="object"
+                                        name="get_vault_products"
+                                        class="btn-success fa fa-arrow-down"
+                                        string=" Import"
+                                        help="Import new products from vault server"/>
+                                <button type="object"
+                                        name="sync_vault_products"
+                                        class="btn-info fa fa-refresh"
+                                        string=" Synchronize"
+                                        help="Synchronize the existing products from vault server"/>
+                            </div>
+                            <br/>
+                            <group id="properties_alert">
+                                <div class="alert alert-warning" role="alert"
+                                     invisible="has_properties == True">
+                                    <span class="fa fa-info-circle" title="Alert"/>
+                                    <p>Maybe you should import and map the Vault properties before to import products.
+                                    </p>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="request_from"/>
+                                <field name="hours_to_subtract"/>
+                                <field name="total_vault_products"/>
+                            </group>
+                        </page>
+                        <page name="product_fields" string="Product fields mapper">
+                            <div id="properties_alert">
+                                <div class="alert alert-info" role="alert">
+                                    <p>
+                                        <span class="fa fa-info-circle"/>
+                                        Map product fields to set in a new revision with the values of the previous
+                                        revision.
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <field name="product_field_ids" nolabel="1">
+                                    <tree limit="100" editable="top">
+                                        <field name="name" readonly="1"/>
+                                        <field name="field_description" readonly="1"/>
+                                        <field name="ttype" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="vault_server_view_tree" model="ir.ui.view">
+        <field name="name">vault.server.view.tree</field>
+        <field name="model">vault.server</field>
+        <field name="arch" type="xml">
+            <tree string="Vault Servers">
+                <field name="name"/>
+                <field name="host_name"/>
+                <field name="user_name"/>
+                <field name="knowledge_vault"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--<record id="vault_server_view_kanban" model="ir.ui.view">
+        <field name="name">vault.server.view.kanban</field>
+        <field name="model">vault.server</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_bottom">
+                                <div class="container o_kanban_card_content">
+                                    <span>
+                                        <img alt="auto" src="rainbow/static/description/icon.png"/>
+                                    </span>
+                                </div>
+                                <span class="container o_kanban_card_content">
+                                    <button class="btn btn-primary" name="get_vault_products"
+                                            type="object">
+                                        <span>Import new products</span>
+                                    </button>
+                                    <br/>
+                                    <br/>
+                                    <button class="btn btn-primary" name="sync_vault_products"
+                                            type="object">
+                                        <span>Synch existing products</span>
+                                    </button>
+                                </span>
+                            </div>
+                            <br/>
+                            <div class="oe_kanban_details">
+                                <div class="o_primary">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div class="o_secondary">
+                                    Host: <field class="o_secondary" name="host_name"/>
+                                </div>
+                                <div class="o_secondary">
+                                    Database: <field class="o_secondary" name="knowledge_vault"/>
+                                </div>
+                                <div class="o_secondary">
+                                    Categories: <field class="o_secondary" name="total_vault_categories"/>
+                                </div>
+                                <div class="o_secondary">
+                                    UoM: <field class="o_secondary" name="total_vault_uom"/>
+                                </div>
+                                <div class="o_secondary">
+                                    Vault products: <field class="o_secondary" name="total_vault_products"/>
+                                </div>
+                                <div class="o_secondary">
+                                    Vault update date from: <field class="o_secondary" name="request_from"/>
+                                </div>
+                                <div class="o_secondary">
+                                    Hours to subtract: <field class="o_secondary" name="hours_to_subtract"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>-->
+
+    <record id="vault_server_log_view_tree" model="ir.ui.view">
+        <field name="name">vault.server.log.view.tree</field>
+        <field name="model">vault.server.log</field>
+        <field name="arch" type="xml">
+            <tree string="Vault Server Log" create="0" edit="0">
+                <field name="user_id"/>
+                <field name="action"/>
+                <field name="vault_user_id"/>
+                <field name="vault_server"/>
+                <field name="vault_host"/>
+                <field name="knowledge_vault"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="vault_server_action" model="ir.actions.act_window">
+        <field name="name">Vault Servers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vault.server</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="vault_server_view_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Vault Server connections.
+            </p>
+        </field>
+    </record>
+
+    <!--<record id="vault_server_log_action" model="ir.actions.act_window">
+        <field name="name">Vault Server Log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vault.server.log</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Vault Server Logs.
+            </p>
+        </field>
+    </record>-->
+
+    <menuitem id="vault_server_root_menu" name="RainbowLink"
+              sequence="10" web_icon="rainbow,static/description/icon.png"/>
+    <menuitem id="vault_server_menu" name="Vault Servers" parent="vault_server_root_menu"
+              action="vault_server_action" sequence="10"/>
+    <!--<menuitem id="vault_server_log_menu" name="Vault Server Log" parent="vault_server_root_menu"
+              action="vault_server_log_action" sequence="20"/>-->
+    <!--<menuitem id="vault_server_items_menu" name="Vault Server Items" parent="vault_server_root_menu"
+              sequence="30"/>-->
+
+</odoo>

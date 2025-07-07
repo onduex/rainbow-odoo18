@@ -30,7 +30,7 @@
         # 'security/ir.model.access.csv',
         # VIEWS
         # 'views/product_views.xml',
-        # 'views/vault_server_views.xml',
+        'views/vault_server_views.xml',
         # 'views/vault_life_cycle_views.xml',
         # 'views/vault_service_views.xml',
         # 'views/vault_category_views.xml',

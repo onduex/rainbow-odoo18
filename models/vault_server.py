@@ -32,7 +32,6 @@ class VaultServer(models.Model):
     host_name = fields.Char(
         string='Server host', required=True,
         help='Autodesk Vault server host name or IP')
-    port = fields.Char(string='Port')
     user_name = fields.Char(
         string='User name', required=True, help='Autodesk Vault user name')
     user_password = fields.Char(

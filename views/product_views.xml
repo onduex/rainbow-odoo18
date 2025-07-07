@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_view_form_inherit_rainbow" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.rainbow</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='inventory']" position="after">
+                <field name="is_vault_product" invisible="1"/>
+                <page name="vault_info" string="Vault Info" invisible="is_vault_product == False">
+                    <group name="vault_product">
+                        <group>
+                            <field name="vault_master_id" readonly="1"/>
+                            <field name="vault_internal_id" readonly="1"/>
+                            <field name="vault_revision" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="vault_last_update" readonly="1"/>
+                            <field name="vault_server_id" widget="selection"
+                                   groups="rainbow.vault_server_manager_group,rainbow.vault_server_user_group"/>
+                            <field name="vault_web_link" widget="url"/>
+                            <field name="vault_desktop_link" widget="url"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button type="object" name="sync_product" invisible="type != 'product'"
+                        class="oe_stat_button" icon="fa-refresh">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value" widget="statinfo">Vault</span>
+                        <span class="o_stat_text">Sync product</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_view_tree_inherit_rainbow" model="ir.ui.view">
+        <field name="name">product.template.view.tree.inherit.rainbow</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="vault_revision"/>
+            </field>
+        </field>
+    </record>
+
+     <record id="product_template_view_kanban_inherit_rainbow" model="ir.ui.view">
+        <field name="name">product.template.view.kanban.inherit.rainbow</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div/t[@t-if='record.default_code.value']" position="replace">
+                <t t-if="record.default_code.value and record.vault_revision.value">
+                    [<field name="default_code"/>-<field name="vault_revision"/>]
+                </t>
+                <t t-else="">[<field name="default_code"/>]</t>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_view_search_inherit_rainbow" model="ir.ui.view">
+        <field name="name">product.template.view.search.inherit.rainbow</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='consumable']" position="after">
+                <separator/>
+                <filter string="Vault Products" name="vault_products" domain="[('is_vault_product', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
