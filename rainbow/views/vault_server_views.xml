@@ -7,29 +7,31 @@
         <field name="arch" type="xml">
             <form string="Vault Server">
                 <sheet>
-                    <!--<div class="oe_button_box" name="button_box">
+                    <div class="oe_button_box" name="button_box">
                         <button name="test_connection" type="object" string="Test connection" icon="fa-desktop"/>
-                    </div>-->
+                    </div>
                     <group>
-                        <group name="server_data" string="Server data">
+                        <group name="server_data" string="SERVER DATA">
                             <field name="name"/>
                             <field name="host_name"/>
                             <field name="app_code"/>
                         </group>
-                        <group name="credentials" string="Credentials">
+                        <group name="credentials" string="CREDENTIALS">
                             <field name="user_name"/>
                             <field name="user_password" password="True"/>
                             <field name="knowledge_vault"/>
                         </group>
                     </group>
                     <group>
-                        <group name="get_data1" string="Get data">
-                            <field name="token"/>
+                        <group name="get_data" string="GET DATA">
+                            <field name="token" widget="vault_token_widget"/>
                             <field name="vault_id"/>
                             <field name="vault_user_id"/>
                         </group>
-                        <group name="get_data2" string="Got data">
-
+                        <group name="other_data" string="OTHER DATA">
+                            <field name="company_id"
+                                   options="{'no_create': True, 'no_create_edit': True,
+                                   'no_quick_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <!--<notebook>

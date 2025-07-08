@@ -36,6 +36,14 @@
         # 'views/vault_uom_views.xml',
         # 'views/res_config_settings_views.xml',
     ],
+
+    'assets': {
+        'web.assets_backend': [
+            'rainbow/static/src/js/vault_token_widget.js',
+            'rainbow/static/src/xml/vault_token_widget.xml',
+        ],
+    },
+
     'images': ['images/main_screenshot.png'],
     'license': 'Other proprietary',
     'installable': True,

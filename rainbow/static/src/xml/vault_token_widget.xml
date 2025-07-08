@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="rainbow.VaultTokenWidget" owl="1">
+        <t t-if="state.token">
+            <span t-esc="state.token"/>
+        </t>
+        <t t-else="">
+            <span>No hay token</span>
+        </t>
+    </t>
+</templates>

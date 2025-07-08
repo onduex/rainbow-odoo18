@@ -1,9 +1,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
-from email.policy import default
 
-from odoo import api, fields, models, _
+import requests
+
+from odoo import models, fields
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
 
@@ -51,3 +52,37 @@ class VaultServer(models.Model):
         string='Company',
         help="Set the Company over which to create the products",
     )
+
+    def test_connection(self):
+        self.ensure_one()
+        url = self.host_name + "/auth/login"
+        login_data = {
+            "input": {
+                "vault": self.knowledge_vault,
+                "userName": self.user_name,
+                "password": self.user_password,
+                "appCode": self.app_code or "RBLv2"
+            }
+        }
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        try:
+            response = requests.post(url, json=login_data, headers=headers, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            access_token = data.get("accessToken") or data.get("token")
+            if access_token:
+                self.token = access_token
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': _('Conexión POST exitosa'),
+                    'message': _('Respuesta recibida y procesada.'),
+                    'type': 'success',
+                    'sticky': False,
+                }
+            }
+        except Exception as e:
+            raise ValidationError(_("Error al conectar con Vault (POST): %s") % str(e))
