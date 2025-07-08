@@ -72,18 +72,46 @@ class VaultServer(models.Model):
             response.raise_for_status()
             data = response.json()
             access_token = data.get("accessToken") or data.get("token")
+
+            # Accede al diccionario 'vaultInformation' y luego a la clave 'id'
+            vault_info = data.get('vaultInformation')
+            if vault_info:
+                self.vault_id = vault_info.get('id')
+
+            # Accede al diccionario 'userInformation' y luego a la clave 'id'
+            user_info = data.get('userInformation')
+            if user_info:
+                self.vault_user_id = user_info.get('id')
+
+            # Define la acción de recarga que se ejecutará después de la notificación.
+            reload_action = {'type': 'ir.actions.client', 'tag': 'reload'}
+
             if access_token:
                 self.token = access_token
-                # 1. Muestra una notificación de éxito
-                self.env.notify_success(message=_("Conexión exitosa. Token recibido."))
+                # Devuelve una notificación de éxito que, al cerrarse, recargará la vista.
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': _('Conexión Exitosa'),
+                        'message': _('Token recibido y guardado.'),
+                        'type': 'success',
+                        'sticky': False,
+                        'next': reload_action,
+                    }
+                }
             else:
-                # Muestra una advertencia si no llega el token
-                self.env.notify_warning(message=_("Conexión exitosa, pero no se recibió token."))
-
-            # 2. Devuelve la acción para recargar la vista
-            return {
-                'type': 'ir.actions.client',
-                'tag': 'reload',
-            }
+                # Devuelve una notificación de advertencia que, al cerrarse, recargará la vista.
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': _('Conexión Exitosa'),
+                        'message': _('La conexión se realizó, pero no se recibió un token.'),
+                        'type': 'warning',
+                        'sticky': True,  # La dejamos fija para que el usuario la vea bien.
+                        'next': reload_action,
+                    }
+                }
         except Exception as e:
             raise ValidationError(_("Error al conectar con Vault (POST): %s") % str(e))
