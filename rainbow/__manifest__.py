@@ -10,10 +10,9 @@
     'author': "Onduex sl",
     'website': "https://www.onduex.com",
     'category': 'Inventory',
-    'version': '18.0.0.0',
+    'version': '18.0.0.1',
     'depends': [
         'base',
-        'res',
         'mrp',
         'stock',
     ],
@@ -27,7 +26,7 @@
         # 'data/res_groups_data.xml',
         # 'data/vault_server_data.xml',
         # SECURITY
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # VIEWS
         # 'views/product_views.xml',
         'views/vault_server_views.xml',

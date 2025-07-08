@@ -7,10 +7,9 @@
         <field name="arch" type="xml">
             <form string="Vault Server">
                 <sheet>
-                    <field name="has_properties" invisible="1"/>
-                    <div class="oe_button_box" name="button_box">
+                    <!--<div class="oe_button_box" name="button_box">
                         <button name="test_connection" type="object" string="Test connection" icon="fa-desktop"/>
-                    </div>
+                    </div>-->
                     <group>
                         <group name="server_data" string="Server data">
                             <field name="name"/>
@@ -22,8 +21,8 @@
                             <field name="knowledge_vault"/>
                         </group>
                     </group>
-                    <notebook>
-                        <!--<page name="vault_categories" string="Categories">
+                    <!--<notebook>
+                        <page name="vault_categories" string="Categories">
                             <group>
                                 <field name="total_vault_categories"/>
                             </group>
@@ -43,8 +42,8 @@
                                     </tree>
                                 </field>
                             </div>
-                        </page>-->
-                        <!--<page name="vault_uom" string="UoM">
+                        </page>
+                        <page name="vault_uom" string="UoM">
                             <group>
                                 <field name="total_vault_uom"/>
                             </group>
@@ -60,8 +59,8 @@
                                     </tree>
                                 </field>
                             </div>
-                        </page>-->
-                        <!--<page name="vault_life_cycle" string="Life Cycles">
+                        </page>
+                        <page name="vault_life_cycle" string="Life Cycles">
                             <div>
                                 <field name="vault_life_cycle_ids" nolabel="1" mode="tree,kanban">
                                     <tree create="0" limit="100" editable="top">
@@ -73,7 +72,7 @@
                                     </tree>
                                 </field>
                             </div>
-                        </page>-->
+                        </page>
                         <page name="vault_properties" string="Product Properties">
                             <div class="o_row" title="Product Properties">
                                 <button type="object"
@@ -153,7 +152,7 @@
                                 </field>
                             </div>
                         </page>
-                    </notebook>
+                    </notebook>-->
                 </sheet>
             </form>
         </field>
@@ -163,12 +162,13 @@
         <field name="name">vault.server.view.tree</field>
         <field name="model">vault.server</field>
         <field name="arch" type="xml">
-            <tree string="Vault Servers">
+            <list string="Vault Servers">
                 <field name="name"/>
                 <field name="host_name"/>
                 <field name="user_name"/>
+                <field name="user_password" password="True"/>
                 <field name="knowledge_vault"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -233,11 +233,11 @@
         </field>
     </record>-->
 
-    <record id="vault_server_log_view_tree" model="ir.ui.view">
+    <!--<record id="vault_server_log_view_tree" model="ir.ui.view">
         <field name="name">vault.server.log.view.tree</field>
         <field name="model">vault.server.log</field>
         <field name="arch" type="xml">
-            <tree string="Vault Server Log" create="0" edit="0">
+            <list string="Vault Server Log" create="0" edit="0">
                 <field name="user_id"/>
                 <field name="action"/>
                 <field name="vault_user_id"/>
@@ -245,15 +245,15 @@
                 <field name="vault_host"/>
                 <field name="knowledge_vault"/>
                 <field name="create_date"/>
-            </tree>
+            </list>
         </field>
-    </record>
+    </record>-->
 
     <record id="vault_server_action" model="ir.actions.act_window">
         <field name="name">Vault Servers</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">vault.server</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="vault_server_view_tree"/>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
