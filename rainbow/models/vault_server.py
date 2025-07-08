@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
+from email.policy import default
 
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
@@ -22,16 +23,17 @@ class VaultServer(models.Model):
     _order = 'id'
 
     name = fields.Char(string='Server name', required=True)
+    app_code = fields.Char(string='appCode', required=True, default='RBWL-V2')
     host_name = fields.Char(
         string='Server host', required=True,
         help='Autodesk Vault server host name or IP')
     user_name = fields.Char(
-        string='User name', required=True, help='Autodesk Vault user name')
+        string='userName', required=True, help='Autodesk Vault user name')
     user_password = fields.Char(
-        string='User password', required=True,
+        string='password', required=True,
         help='Autodesk Vault user password')
     knowledge_vault = fields.Char(
-        string='Database name', required=True, help='Autodesk Vault DB name')
+        string='vault', required=True, help='Autodesk Vault DB name')
     token = fields.Char(
         string='Token', help='Security Token of the current connection')
     vault_user_id = fields.Integer(

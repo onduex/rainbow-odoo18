@@ -14,6 +14,7 @@
                         <group name="server_data" string="Server data">
                             <field name="name"/>
                             <field name="host_name"/>
+                            <field name="app_code"/>
                         </group>
                         <group name="credentials" string="Credentials">
                             <field name="user_name"/>
@@ -165,6 +166,7 @@
             <list string="Vault Servers">
                 <field name="name"/>
                 <field name="host_name"/>
+                <field name="app_code"/>
                 <field name="user_name"/>
                 <field name="user_password" password="True"/>
                 <field name="knowledge_vault"/>
