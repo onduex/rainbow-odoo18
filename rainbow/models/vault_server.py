@@ -35,9 +35,11 @@ class VaultServer(models.Model):
     knowledge_vault = fields.Char(
         string='vault', required=True, help='Autodesk Vault DB name')
     token = fields.Char(
-        string='Token', help='Security Token of the current connection')
+        string='accesToken', help='Security Token of the current connection')
     vault_user_id = fields.Integer(
         string='User id', help='Vault user Id of the current connection')
+    vault_id = fields.Integer(
+        string='Vault id', help='Vault Id')
     request_from = fields.Datetime(
         string='Vault update date from',
         help='Vault update date from to request to Vault server. You can set any hour to subtract in the following field.',

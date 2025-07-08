@@ -22,6 +22,16 @@
                             <field name="knowledge_vault"/>
                         </group>
                     </group>
+                    <group>
+                        <group name="get_data1" string="Get data">
+                            <field name="token"/>
+                            <field name="vault_id"/>
+                            <field name="vault_user_id"/>
+                        </group>
+                        <group name="get_data2" string="Got data">
+
+                        </group>
+                    </group>
                     <!--<notebook>
                         <page name="vault_categories" string="Categories">
                             <group>
