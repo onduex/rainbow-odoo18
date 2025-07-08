@@ -74,15 +74,16 @@ class VaultServer(models.Model):
             access_token = data.get("accessToken") or data.get("token")
             if access_token:
                 self.token = access_token
+                # 1. Muestra una notificación de éxito
+                self.env.notify_success(message=_("Conexión exitosa. Token recibido."))
+            else:
+                # Muestra una advertencia si no llega el token
+                self.env.notify_warning(message=_("Conexión exitosa, pero no se recibió token."))
+
+            # 2. Devuelve la acción para recargar la vista
             return {
                 'type': 'ir.actions.client',
-                'tag': 'display_notification',
-                'params': {
-                    'title': _('Conexión POST exitosa'),
-                    'message': _('Respuesta recibida y procesada.'),
-                    'type': 'success',
-                    'sticky': False,
-                }
+                'tag': 'reload',
             }
         except Exception as e:
             raise ValidationError(_("Error al conectar con Vault (POST): %s") % str(e))
