@@ -16,6 +16,14 @@ class ResEndpoint(models.Model):
     full_name = fields.Char(string='Full name', compute='_compute_full_name', store=True,
                             help='Full name of the endpoint')
     vault_server_id = fields.Many2one(comodel_name='vault.server', string='Vault server', required=False)
+    method = fields.Selection(
+        string='Method',
+        selection=[('post', 'POST'),
+                   ('get', 'GET'),
+                   ('put', 'PUT'),
+                   ('delete', 'DELETE')],
+        required=False, )
+
 
     @api.depends('name', 'vault_server_id')
     def _compute_full_name(self):

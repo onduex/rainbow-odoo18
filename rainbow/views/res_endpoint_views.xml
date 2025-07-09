@@ -8,6 +8,7 @@
             <list string="Endpoint" editable="bottom">
                 <field name="vault_server_id"/>
                 <field name="name"/>
+                <field name="method"/>
                 <field name="full_name"/>
             </list>
         </field>
