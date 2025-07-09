@@ -40,30 +40,30 @@
         </field>
     </record>
 
-    <!--<record id="product_template_view_kanban_inherit_rainbow" model="ir.ui.view">
+    <record id="product_template_view_kanban_inherit_rainbow" model="ir.ui.view">
        <field name="name">product.template.view.kanban.inherit.rainbow</field>
        <field name="model">product.template</field>
        <field name="inherit_id" ref="product.product_template_kanban_view"/>
        <field name="arch" type="xml">
-           <xpath expr="//div/t[@t-if='record.default_code.value']" position="replace">
-               <t t-if="record.default_code.value and record.vault_revision.value">
+           <xpath expr="//span[@t-if='record.default_code.value']" position="replace">
+               <span t-if="record.default_code.value and record.vault_revision.value">
                    [<field name="default_code"/>-<field name="vault_revision"/>]
-               </t>
+               </span>
                <t t-else="">[<field name="default_code"/>]</t>
            </xpath>
        </field>
-   </record>-->
+   </record>
 
-    <!--<record id="product_template_view_search_inherit_rainbow" model="ir.ui.view">
+    <record id="product_template_view_search_inherit_rainbow" model="ir.ui.view">
         <field name="name">product.template.view.search.inherit.rainbow</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_search_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//filter[@name='consumable']" position="after">
-                <separator/>
+            <xpath expr="//filter[@name='filter_to_sell']" position="before">
                 <filter string="Vault Products" name="vault_products" domain="[('is_vault_product', '=', True)]"/>
+                <separator/>
             </xpath>
         </field>
-    </record>-->
+    </record>
 
 </odoo>
