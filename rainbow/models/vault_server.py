@@ -4,7 +4,7 @@ import logging
 
 import requests
 
-from odoo import models, fields
+from odoo import api, models, fields
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import _
 
@@ -23,7 +23,7 @@ class VaultServer(models.Model):
     _description = "Vault Server"
     _order = 'id'
 
-    name = fields.Char(string='Server name', required=True)
+    name = fields.Char(string='Server name', required=False)
     app_code = fields.Char(string='appCode', required=True, default='RBWL-V2')
     host_name = fields.Char(
         string='Server host', required=True,
@@ -52,6 +52,15 @@ class VaultServer(models.Model):
         string='Company',
         help="Set the Company over which to create the products",
     )
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for record in records:
+            if not record.name:
+                record.name = f"00{record.id}"
+        return records
 
     def test_connection(self):
         self.ensure_one()
