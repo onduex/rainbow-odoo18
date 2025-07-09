@@ -5,10 +5,11 @@
         <field name="name">res.endpoint.view.list</field>
         <field name="model">res.endpoint</field>
         <field name="arch" type="xml">
-            <list string="Endpoint">
-                <field name="name"/>
+            <list string="Endpoint" editable="bottom">
                 <field name="vault_server_id"/>
                 <field name="rainbow_server_id"/>
+                <field name="name"/>
+                <field name="full_name"/>
             </list>
         </field>
     </record>
