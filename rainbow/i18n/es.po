@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rainbow
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-09 08:42+0000\n"
+"PO-Revision-Date: 2025-07-09 10:45+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__knowledge_vault
+msgid "Autodesk Vault DB name"
+msgstr "Nombre de la base de datos de Autodesk Vault"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_rainbow_server__name
+#: model:ir.model.fields,help:rainbow.field_vault_server__host_name
+msgid "Autodesk Vault server host name or IP"
+msgstr "Nombre de host o IP del servidor de Autodesk Vault"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__user_name
+msgid "Autodesk Vault user name"
+msgstr "Nombre de usuario de Autodesk Vault"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__user_password
+msgid "Autodesk Vault user password"
+msgstr "Contraseña de usuario de Autodesk Vault"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/product.py:0
+#: model:ir.model.constraint,message:rainbow.constraint_product_template_default_code_revision_uniq
+msgid "Both internal reference and revision must be unique!"
+msgstr "¡Tanto la referencia interna como la revisión deben ser únicas!"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "CREDENTIALS"
+msgstr "CREDENCIALES"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_server.py:0
+msgid "Conexión Exitosa"
+msgstr "Conexión Exitosa"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__create_uid
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__create_date
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__display_name
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__endpoint_password
+msgid "Endpoint password"
+msgstr "Contraseña de punto de conexión"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_server.py:0
+msgid "Error al conectar con Vault (POST): %s"
+msgstr "Error al conectar con Vault (POST): %s"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "GET DATA"
+msgstr "OBTENER DATOS"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__hours_to_subtract
+msgid "Hours to subtract"
+msgstr "Horas a restar"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__id
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__id
+msgid "ID"
+msgstr "ID"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__is_vault_product
+#: model:ir.model.fields,field_description:rainbow.field_product_template__is_vault_product
+msgid "Is Vault Product"
+msgstr "Es un producto de vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__is_old_revision
+#: model:ir.model.fields,field_description:rainbow.field_product_template__is_old_revision
+msgid "Is old revision?"
+msgstr "¿Es una revisión antigua?"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_server.py:0
+msgid "La conexión se realizó, pero no se recibió un token."
+msgstr "La conexión se realizó, pero no se recibió un token."
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__write_uid
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__write_date
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__write_date
+msgid "Last Updated on"
+msgstr "Actualizado el"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_last_update
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_last_update
+msgid "Last update on Vault"
+msgstr "Última actualización sobre Vault"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_uom.py:0
+msgid ""
+"No one Odoo UoM mapped with the [%s] Vault UoM!\n"
+"Please, make sure to map all Vault UoM before to import new products."
+msgstr ""
+"¡Nadie que Odoo UoM mapeó con el [%s] Vault UoM!\n"
+"Por favor, asegúrese de mapear todas las unidades de medida de Vault antes "
+"de importar nuevos productos."
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_product_property.py:0
+msgid "No one property named [%s]!"
+msgstr "¡Ninguna propiedad llamada [%s]!"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "OTHER DATA"
+msgstr "OTROS DATOS"
+
+#. module: rainbow
+#: model:ir.model,name:rainbow.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: rainbow
+#: model:ir.model,name:rainbow.model_rainbow_server
+#: model_terms:ir.ui.view,arch_db:rainbow.rainbow_server_view_list
+msgid "Rainbow Server"
+msgstr "Servidor Rainbow"
+
+#. module: rainbow
+#: model_terms:ir.actions.act_window,help:rainbow.rainbow_server_action
+msgid "Rainbow Server allows you to manage your Rainbow server configurations"
+msgstr ""
+"Rainbow Server le permite administrar las configuraciones de su servidor "
+"Rainbow"
+
+#. module: rainbow
+#: model:ir.actions.act_window,name:rainbow.rainbow_server_action
+#: model:ir.ui.menu,name:rainbow.rainbow_server_menu
+msgid "Rainbow server"
+msgstr "Servidor Rainbow"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_rainbow_server__endpoint_password
+msgid "Rainbow server endpoint password"
+msgstr "Contraseña del punto de conexión del servidor Rainbow"
+
+#. module: rainbow
+#: model:ir.ui.menu,name:rainbow.vault_server_root_menu
+msgid "RainbowLink"
+msgstr "RainbowLink (Enlace Arcoíris)"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "SERVER DATA"
+msgstr "DATOS DEL SERVIDOR"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__token
+msgid "Security Token of the current connection"
+msgstr "Token de seguridad de la conexión actual"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_rainbow_server__name
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__host_name
+msgid "Server host"
+msgstr "Host del servidor"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__name
+msgid "Server name"
+msgstr "Nombre del servidor"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__company_id
+msgid "Set the Company over which to create the products"
+msgstr "Establezca la empresa sobre la que se van a crear los productos"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/rainbow_server.py:0
+msgid "Solo puede existir un registro de este modelo."
+msgstr "Solo puede existir un registro de este modelo."
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "Test connection"
+msgstr "Probar conexión"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_server.py:0
+msgid "Token recibido y guardado."
+msgstr "Token recibido y guardado."
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__vault_user_id
+msgid "User id"
+msgstr "ID de usuario"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_desktop_link
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_desktop_link
+msgid "Vault Desktop link"
+msgstr "Enlace de Vault Desktop"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_internal_id
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_internal_id
+#: model:ir.model.fields,help:rainbow.field_vault_server__vault_id
+msgid "Vault Id"
+msgstr "ID de la vault"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.product_template_view_form_inherit_rainbow
+msgid "Vault Info"
+msgstr "Información de la vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_master_id
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_master_id
+msgid "Vault Master Id"
+msgstr "ID de maestro de la vault"
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.product_template_view_search_inherit_rainbow
+msgid "Vault Products"
+msgstr "Productos de la vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_revision
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_revision
+msgid "Vault Revision"
+msgstr "Revisión de la vault"
+
+#. module: rainbow
+#: model:ir.model,name:rainbow.model_vault_server
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_server_id
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_server_id
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
+msgid "Vault Server"
+msgstr "Servidor de vault"
+
+#. module: rainbow
+#: model_terms:ir.actions.act_window,help:rainbow.vault_server_action
+msgid "Vault Server connections."
+msgstr "Conexiones de Vault Server."
+
+#. module: rainbow
+#: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_tree
+msgid "Vault Servers"
+msgstr "Servidores de vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_product_product__vault_web_link
+#: model:ir.model.fields,field_description:rainbow.field_product_template__vault_web_link
+msgid "Vault Web link"
+msgstr "Enlace web de la vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__vault_id
+msgid "Vault id"
+msgstr "ID de la vault"
+
+#. module: rainbow
+#: model:ir.actions.act_window,name:rainbow.vault_server_action
+#: model:ir.ui.menu,name:rainbow.vault_server_menu
+msgid "Vault servers"
+msgstr "Servidores de vault"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__request_from
+msgid "Vault update date from"
+msgstr "Fecha de actualización de Vault desde"
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__request_from
+msgid ""
+"Vault update date from to request to Vault server. You can set any hour to "
+"subtract in the following field."
+msgstr ""
+"Fecha de actualización de Vault desde la solicitud al servidor de Vault. "
+"Puede establecer cualquier hora para restar en el siguiente campo."
+
+#. module: rainbow
+#: model:ir.model.fields,help:rainbow.field_vault_server__vault_user_id
+msgid "Vault user Id of the current connection"
+msgstr "ID de usuario de Vault de la conexión actual"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__token
+msgid "accesToken"
+msgstr "accesToken"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__app_code
+msgid "appCode"
+msgstr "appCode"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__user_password
+msgid "password"
+msgstr "contraseña"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__user_name
+msgid "userName"
+msgstr "nombre de usuario"
+
+#. module: rainbow
+#: model:ir.model.fields,field_description:rainbow.field_vault_server__knowledge_vault
+msgid "vault"
+msgstr "vault"
+
+#. module: rainbow
+#. odoo-python
+#: code:addons/rainbow/models/vault_life_cycle.py:0
+msgid "vault_internal_id must be unique across the database!"
+msgstr "vault_internal_id debe ser único en toda la base de datos!"
