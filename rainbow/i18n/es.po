@@ -42,8 +42,8 @@ msgstr "Contraseña de usuario de Autodesk Vault"
 #. odoo-python
 #: code:addons/rainbow/models/product.py:0
 #: model:ir.model.constraint,message:rainbow.constraint_product_template_default_code_revision_uniq
-msgid "Both internal reference and revision must be unique!"
-msgstr "¡Tanto la referencia interna como la revisión deben ser únicas!"
+msgid "The combination of Default Code and Vault Revision must be unique!"
+msgstr "La combinación de Referencia Interna y Revisión de Vault debe ser única!"
 
 #. module: rainbow
 #: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form
@@ -196,7 +196,7 @@ msgstr "Contraseña del punto de conexión del servidor Rainbow"
 #. module: rainbow
 #: model:ir.ui.menu,name:rainbow.vault_server_root_menu
 msgid "RainbowLink"
-msgstr "RainbowLink (Enlace Arcoíris)"
+msgstr "RainbowLink"
 
 #. module: rainbow
 #: model_terms:ir.ui.view,arch_db:rainbow.vault_server_view_form

@@ -29,6 +29,6 @@ class ProductTemplate(models.Model):
         (
             "default_code_revision_uniq",
             "unique(default_code, vault_revision)",
-            _("Both internal reference and revision must be unique!"),
+            _("The combination of Default Code and Vault Revision must be unique."),
         ),
     ]
