@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
+from pprint import pprint
 
 import requests
 
@@ -67,13 +68,13 @@ class VaultServer(models.Model):
 
     def test_connection(self):
         self.ensure_one()
-        url = self.host_name + "/auth/login"
+        url = self.name + "/sessions"
         login_data = {
             "input": {
                 "vault": self.knowledge_vault,
                 "userName": self.user_name,
                 "password": self.user_password,
-                "appCode": self.app_code or "RBLv2"
+                "appCode": self.app_code
             }
         }
         headers = {
@@ -83,7 +84,8 @@ class VaultServer(models.Model):
             response = requests.post(url, json=login_data, headers=headers, timeout=30)
             response.raise_for_status()
             data = response.json()
-            access_token = data.get("accessToken") or data.get("token")
+            pprint(data)  # Imprime la respuesta JSON para depuración
+            access_token = data.get("accessToken")
 
             # Accede al diccionario 'vaultInformation' y luego a la clave 'id'
             vault_info = data.get('vaultInformation')
