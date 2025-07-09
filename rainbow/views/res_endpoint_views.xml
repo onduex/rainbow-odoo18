@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_endpoint_view_list" model="ir.ui.view">
+        <field name="name">res.endpoint.view.list</field>
+        <field name="model">res.endpoint</field>
+        <field name="arch" type="xml">
+            <list string="Endpoint">
+                <field name="name"/>
+                <field name="vault_server_id"/>
+                <field name="rainbow_server_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!--<record id="vault_server_service_view_search" model="ir.ui.view">
+      <field name="name">vault.server.service.search.view</field>
+      <field name="model">vault.server.service</field>
+      <field name="arch" type="xml">
+        <search string="Search Categories">
+          <field name="key"/>
+        </search>
+      </field>
+    </record>-->
+
+    <record id="res_endpoint_action" model="ir.actions.act_window">
+        <field name="name">Endpoint management</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.endpoint</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new endpoint to manage your services
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="res_endpoint_menu"
+              name="Endpoint management"
+              parent="vault_server_root_menu"
+              action="res_endpoint_action"
+              sequence="30"/>
+
+</odoo>

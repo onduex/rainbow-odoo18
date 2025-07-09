@@ -23,11 +23,10 @@ class VaultServer(models.Model):
     _description = "Vault Server"
     _order = 'id'
 
-    name = fields.Char(string='Server name', required=False)
     app_code = fields.Char(string='appCode', required=True, default='RBWL-V2')
-    host_name = fields.Char(
+    name = fields.Char(
         string='Server host', required=True,
-        help='Autodesk Vault server host name or IP')
+        help='https://8d49cda8.vg.autodesk.com/AutodeskDM/Services/api/vault/v2')
     user_name = fields.Char(
         string='userName', required=True, help='Autodesk Vault user name')
     user_password = fields.Char(

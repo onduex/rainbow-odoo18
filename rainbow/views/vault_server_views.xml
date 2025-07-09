@@ -13,7 +13,6 @@
                     <group>
                         <group name="server_data" string="SERVER DATA">
                             <field name="name"/>
-                            <field name="host_name"/>
                             <field name="app_code"/>
                         </group>
                         <group name="credentials" string="CREDENTIALS">
@@ -177,7 +176,6 @@
         <field name="arch" type="xml">
             <list string="Vault Servers">
                 <field name="name"/>
-                <field name="host_name"/>
                 <field name="app_code"/>
                 <field name="user_name"/>
                 <field name="user_password" password="True"/>

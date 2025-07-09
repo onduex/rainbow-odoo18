@@ -30,9 +30,9 @@
         # VIEWS
         'views/product_views.xml',
         'views/vault_server_views.xml',
-        'views/rainbow_server_views.xml'
+        'views/rainbow_server_views.xml',
+        'views/res_endpoint_views.xml',
         # 'views/vault_life_cycle_views.xml',
-        # 'views/vault_service_views.xml',
         # 'views/vault_category_views.xml',
         # 'views/vault_uom_views.xml',
         # 'views/res_config_settings_views.xml',

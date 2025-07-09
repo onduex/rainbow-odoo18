@@ -2,4 +2,5 @@
 
 from . import product
 from . import rainbow_server
+from . import res_endpoint
 from . import vault_server
