@@ -24,16 +24,21 @@ class VaultServer(models.Model):
     _order = 'id'
 
     app_code = fields.Char(string='appCode', required=True, default='RBWL-V2')
+    type = fields.Selection(
+        string='Type',
+        selection=[('vault', 'Vault'), ('rainbow', 'Rainbow')],
+        required=False, default='vault',)
     name = fields.Char(
-        string='Server host', required=True,
-        help='https://8d49cda8.vg.autodesk.com/AutodeskDM/Services/api/vault/v2')
+        string='Name', required=True,
+        default='https://gateway.autodesk.com/AutodeskDM/Services/api/vault/v2'
+    )
     user_name = fields.Char(
-        string='userName', required=True, help='Autodesk Vault user name')
+        string='userName', required=False, help='Autodesk Vault user name')
     user_password = fields.Char(
         string='password', required=True,
         help='Autodesk Vault user password')
     knowledge_vault = fields.Char(
-        string='vault', required=True, help='Autodesk Vault DB name')
+        string='vault', required=False, help='Autodesk Vault DB name')
     token = fields.Char(
         string='accesToken', help='Security Token of the current connection')
     vault_user_id = fields.Integer(
@@ -51,7 +56,6 @@ class VaultServer(models.Model):
         string='Company',
         help="Set the Company over which to create the products",
     )
-
 
     @api.model_create_multi
     def create(self, vals_list):

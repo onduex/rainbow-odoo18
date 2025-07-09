@@ -1,4 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 rainbow.access_vault_server,access_vault_server,rainbow.model_vault_server,base.group_user,1,1,1,1
-rainbow.access_rainbow_server,access_rainbow_server,rainbow.model_rainbow_server,base.group_user,1,1,1,1
 rainbow.access_res_endpoint,access_res_endpoint,rainbow.model_res_endpoint,base.group_user,1,1,1,1

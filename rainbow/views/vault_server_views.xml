@@ -12,16 +12,17 @@
                     </div>
                     <group>
                         <group name="server_data" string="SERVER DATA">
+                            <field name="type"/>
                             <field name="name"/>
-                            <field name="app_code"/>
+                            <field name="app_code" invisible="type in ['rainbow']"/>
                         </group>
                         <group name="credentials" string="CREDENTIALS">
-                            <field name="user_name"/>
+                            <field name="user_name" invisible="type in ['rainbow']"/>
                             <field name="user_password" password="True"/>
-                            <field name="knowledge_vault"/>
+                            <field name="knowledge_vault" invisible="type in ['rainbow']"/>
                         </group>
                     </group>
-                    <group>
+                    <group invisible="type in ['rainbow']">
                         <group name="get_data" string="GET DATA">
                             <field name="token" widget="vault_token_widget"/>
                             <field name="vault_id"/>
@@ -175,6 +176,7 @@
         <field name="model">vault.server</field>
         <field name="arch" type="xml">
             <list string="Vault Servers">
+                <field name="type"/>
                 <field name="name"/>
                 <field name="app_code"/>
                 <field name="user_name"/>

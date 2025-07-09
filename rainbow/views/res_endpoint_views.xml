@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <list string="Endpoint" editable="bottom">
                 <field name="vault_server_id"/>
-                <field name="rainbow_server_id"/>
                 <field name="name"/>
                 <field name="full_name"/>
             </list>
